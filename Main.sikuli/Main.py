@@ -32,9 +32,9 @@ class MainClass:
         click(image)
 
     @classmethod
-    def returnImageCount(self, image):
+    def returnImageCount(self, region, image):
         count = 0
-        for i in findAll(image):
+        for i in region.findAll(image):
             count += 1
         return count
 
