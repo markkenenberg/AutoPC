@@ -29,6 +29,7 @@ class testSendMessageP2P:
     iconSearch.highlight(1)
     click(Resource.imgSearch)
     type(friendName + Key.ENTER) #Search name, press Enter to open Chat Window
+    wait(0.5)
     type(msgContent + Key.ENTER) #Send message
     
     r = MainClass.findInRangeAbove(Resource.imgTextboxChatFocused, 800) #Set range in Chat Window to find sent message
@@ -46,9 +47,9 @@ class testSendMessageP2P:
     
     msgfromClipboard = Utils.getFromClipboard()
     if msgfromClipboard == msgContent:
-        popup("PASS: Message sent and displayed correctly!")
+        popup("SUCCESS: Message sent and displayed correctly!")
     else:
-        popup("FAIL: Message sent but did not display correctly!")
+        popup("ERROR: Message sent but did not display correctly!")
     
 class testSendPhoto:
     #Define variables
@@ -65,6 +66,8 @@ class testSendPhoto:
     type(friendName + Key.ENTER) #Search name, press Enter to open Chat Window
 
     if exists(Resource.imgAttachPhoto):
+        imgAttachPhoto = find(Resource.imgAttachPhoto)
+        imgAttachPhoto.highlight(1)
         click(Resource.imgAttachPhoto)
         wait(1)
         type("d", Key.ALT) #Hotkey to focus directory textbox
@@ -73,5 +76,57 @@ class testSendPhoto:
         wait(1)
         type("n", Key.ALT) #Hotkey to focus filename textbox
         type("DMR_120.jpg" + Key.ENTER)
+        popup("SUCCESS: Please verify message photo!")
     else:
         popup("ERROR: Can not find Photo Attachment Icon")
+
+class TestSendFile:
+        #Define variables
+    friendName = "Alehaptap"
+    
+    #Start or focus on Zalo (Zalo will be maximized)
+    wait(1)
+    MainClass.startZalo(appUnderTest, insDir)
+    MainClass.switchToZalo(appUnderTest)
+    
+    iconSearch = find(Resource.imgSearch) #Find and click Search
+    iconSearch.highlight(1)
+    click(Resource.imgSearch)
+    type(friendName + Key.ENTER) #Search name, press Enter to open Chat Window
+
+    if exists(Resource.imgAttachFile):
+        imgAttachFile = find(Resource.imgAttachFile)
+        imgAttachFile.highlight(1)
+        click(Resource.imgAttachFile)
+        wait(1)
+        type("d", Key.ALT) #Hotkey to focus directory textbox
+        wait(0.5)
+        type("C:\Program Files (x86)\Windows Media Player\Media Renderer" + Key.ENTER)
+        wait(1)
+        type("n", Key.ALT) #Hotkey to focus filename textbox
+        type("RenderingControl.xml" + Key.ENTER)
+        popup("SUCCESS: Please verify message file!")
+    else:
+        popup("ERROR: Can not find File Attachment Icon")
+
+class testSendSticker:
+    #Define variables
+    friendName = "Alehaptap"
+    msgContent = "this is a text"
+    
+    #Start or focus on Zalo (Zalo will be maximized)
+    wait(1)
+    MainClass.startZalo(appUnderTest, insDir)
+    MainClass.switchToZalo(appUnderTest)
+
+    iconSearch = find(Resource.imgSearch) #Find and click Search
+    iconSearch.highlight(1)
+    click(Resource.imgSearch)
+    type(friendName + Key.ENTER) #Search name, press Enter to open Chat Window
+    wait(0.5)
+    type(msgContent + Key.ENTER) #Send message
+
+    iconSticker = find(Resource.imgSticker)
+    iconSticker.highlight(1)
+    click(Resource.imgSticker)
+    click(Resource.imgCuHanh1)

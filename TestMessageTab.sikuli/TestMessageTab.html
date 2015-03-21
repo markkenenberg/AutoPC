@@ -1,0 +1,167 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }
+
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>TestMessageTab.sikuli\TestMessageTab.sikuli</h2> <a href="TestMessageTab.sikuli\TestMessageTab.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="kw">from</span> sikuli <span class="kw">import</span> *
+<span class="kw">import</span> Main
+reload(Main)
+<span class="kw">import</span> Resource
+reload(Resource)
+<span class="kw">import</span> Utils
+reload(Utils)
+<span class="kw">import</span> shutil
+
+<span class="kw">from</span> Main <span class="kw">import</span> MainClass
+<span class="kw">from</span> Utils <span class="kw">import</span> Utils
+
+<span class="cmt">#Define Application Under Test
+</span>insDir = <span class="str">"C:\Program Files (x86)\Zalo\Zalo.exe"</span>
+appName = <span class="str">"Zalo"</span>
+userName = <span class="str">"Nam"</span>
+appUnderTest = App(appName + <span class="str">" - "</span> + userName)
+
+<span class="kw">class</span> TestDeleteConversation:
+    <span class="cmt">#Start or focus on Zalo (Zalo will be maximized)
+</span>    <span class="skw">wait</span>(<span class="dig">1</span>)
+    MainClass.startZalo(appUnderTest, insDir)
+    MainClass.switchToZalo(appUnderTest)
+
+    friendName = <span class="str">"Alehaptap"</span>
+    msgContent = <span class="str">"Test cai nha"</span>
+
+    <span class="cmt">#Send a message to create first Thread Chat
+</span>    iconSearch = <span class="skw">find</span>(Resource.imgSearch) <span class="cmt">#Find and click Search</span>
+    iconSearch.highlight(<span class="dig">1</span>)
+    <span class="skw">click</span>(Resource.imgSearch)
+    <span class="skw">type</span>(friendName + Key.ENTER) <span class="cmt">#Search name, press Enter to open Chat Window</span>
+    <span class="skw">wait</span>(<span class="dig">0.5</span>)
+    <span class="skw">type</span>(msgContent + Key.ENTER) <span class="cmt">#Send message</span>
+
+    firstThread = MainClass.findInRangeBelow(Resource.imgTabDock, <span class="dig">72</span>) <span class="cmt">#Conversation height: 72px</span>
+    firstThread.highlight(<span class="dig">1</span>)
+
+    imgFirstThread = <span class="skw">capture</span>(firstThread) <span class="cmt">#Capture image to check existence after delete</span>
+
+    <span class="skw">rightClick</span>(firstThread)
+    <span class="skw">wait</span>(<span class="dig">0.5</span>)
+    <span class="skw">click</span>(Resource.imgXoaHoiThoai)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">click</span>(Resource.imgConfirmNo)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="kw">if</span> <span class="kw">not</span> firstThread.exists(imgFirstThread):
+        <span class="skw">popup</span>(<span class="str">"FAIL: Thread chat disappear?!"</span>)
+    <span class="kw">else</span>:
+        <span class="skw">popup</span>(<span class="str">"PASS: Thread chat remained."</span>)
+
+    <span class="skw">rightClick</span>(firstThread)
+    <span class="skw">wait</span>(<span class="dig">0.5</span>)
+    <span class="skw">click</span>(Resource.imgXoaHoiThoai)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">click</span>(Resource.imgConfirmYes)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="kw">if</span> firstThread.exists(imgFirstThread):
+        <span class="skw">popup</span>(<span class="str">"FAIL: Thread chat not deleted"</span>)
+    <span class="kw">else</span>:
+        <span class="skw">popup</span>(<span class="str">"PASS: Thread chat is removed from conversation list."</span>)
+
+
+<span class="kw">class</span> TestFocusAndSwitchTab:
+    <span class="cmt">#Start or focus on Zalo (Zalo will be maximized)
+</span>    <span class="skw">wait</span>(<span class="dig">1</span>)
+    MainClass.startZalo(appUnderTest, insDir)
+    MainClass.switchToZalo(appUnderTest)
+
+    <span class="cmt">#Click message tab and verify
+</span>    rMessage = <span class="skw">find</span>(Resource.imgMessageTab)
+    rMessage.highlight(<span class="dig">1</span>)
+    <span class="skw">click</span>(Resource.imgMessageTab)
+
+    headerSearch = Resource.imgHeaderSearchBar
+    r2 = MainClass.findInRangeBelow(headerSearch, <span class="dig">100</span>)
+    r2.highlight(<span class="dig">1</span>)
+    <span class="kw">if</span> <span class="kw">not</span> r2.exists(Resource.imgSubContactTab):
+        <span class="skw">popup</span>(<span class="str">"PASS: this is message tab."</span>)
+    <span class="kw">else</span>:
+        <span class="skw">popup</span>(<span class="str">"FAIL: this is Danh Ba tab."</span>)
+
+    <span class="cmt">#Click Contact tab and verify
+</span>    rContact = <span class="skw">find</span>(Resource.imgContactTab)
+    rContact.highlight(<span class="dig">1</span>)
+    <span class="skw">click</span>(Resource.imgContactTab)
+
+    r2.highlight(<span class="dig">1</span>)
+    <span class="kw">if</span> r2.exists(Resource.imgSubContactTab):
+        <span class="skw">popup</span>(<span class="str">"PASS: found Ban Be and Danh Sach Nhom, this is contact tab."</span>)
+    <span class="kw">else</span>:
+        <span class="skw">popup</span>(<span class="str">"FAIL: can not find header bar of contact tab (Ban be and Nhom)."</span>)
+</pre>
+</body>
+</html>

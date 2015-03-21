@@ -12,8 +12,11 @@ imgBtnFeedback =     "1426602924498.png"
 #Maintab
 imgSearch =          "1426602962178.png"
 imgSettings =        "1426602984079.png"
-imgTinNhanTab =      "1426880169388.png"
-imgDanhBaTab =       "1426880177091.png"
+imgTabDock =         "1426926184826.png"
+imgMessageTab =      "1426880169388.png"
+imgContactTab =      "1426880177091.png"
+imgSubContactTab =   "1426924850651.png"
+imgHeaderSearchBar = "1426924899515.png"
 imgTaoTroChuyen =    "1426602596454.png"
 
 #ChatWindow
@@ -34,11 +37,19 @@ imgTextboxChatFocused = "1426880142619.png"
 imgSaoChep =         "1426881434922.png"
 imgXoa =             "1426881449457.png"
 
+#Conversation Right-click option
+imgXoaHoiThoai =     "1426929665595.png"
+imgConfirmYes =      "1426929711896.png"
+imgConfirmNo =       "1426929722112.png"
+
 #Message ACK
 imgDaGui =           "1426882253696.png"
 imgDaNhan =          "1426883053465.png"
 imgDaXem =           "1426884339653.png"
+
 #Contact Tab
 imgBuddyList =       "1426603168751.png"
 imgGroupList =       "1426603187031.png"
 
+#Stickers
+imgCuHanh1 =         "1426931233694.png"
