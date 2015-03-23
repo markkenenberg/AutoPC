@@ -18,13 +18,13 @@ appUnderTest = App(appName + " - " + userName)
 class testSendMessageP2P:
     #Define variables
     friendName = "Alehaptap"
-    msgContent = "this is a text"
+    msgContent = "Start at " + Utils.getCurrDatetime()
     
     #Start or focus on Zalo (Zalo will be maximized)
     wait(1)
     MainClass.startZalo(appUnderTest, insDir)
     MainClass.switchToZalo(appUnderTest)
-    
+
     iconSearch = find(Resource.imgSearch) #Find and click Search
     iconSearch.highlight(1)
     click(Resource.imgSearch)
@@ -43,13 +43,17 @@ class testSendMessageP2P:
     elif r.exists(Resource.imgDaXem):
         rightClick(Resource.imgDaXem)
     
-    click(Resource.imgSaoChep)
+    click(Resource.imgSaoChep) #copy message content to clipboard
     
     msgfromClipboard = Utils.getFromClipboard()
     if msgfromClipboard == msgContent:
-        popup("SUCCESS: Message sent and displayed correctly!")
+        popup("SUCCESS: Message sent and displayed correctly!" + 
+                "\nExpect text: " + msgContent +
+                "\nActual text: " + msgfromClipboard)
     else:
-        popup("ERROR: Message sent but did not display correctly!")
+        popup("ERROR: Message sent but did not display correctly!" + 
+                "\nExpect text: " + msgContent +
+                "\nActual text: " + msgfromClipboard)
     
 class testSendPhoto:
     #Define variables
@@ -64,6 +68,7 @@ class testSendPhoto:
     iconSearch.highlight(1)
     click(Resource.imgSearch)
     type(friendName + Key.ENTER) #Search name, press Enter to open Chat Window
+    type("LOG: Start send photo @" + Utils.getCurrDatetime() + Key.ENTER)
 
     if exists(Resource.imgAttachPhoto):
         imgAttachPhoto = find(Resource.imgAttachPhoto)
@@ -76,12 +81,12 @@ class testSendPhoto:
         wait(1)
         type("n", Key.ALT) #Hotkey to focus filename textbox
         type("DMR_120.jpg" + Key.ENTER)
-        popup("SUCCESS: Please verify message photo!")
+        type("LOG SUCCESS: Please verify message photo!" + Key.ENTER)
     else:
-        popup("ERROR: Can not find Photo Attachment Icon")
+        type("LOG ERROR: Can not find Photo Attachment Icon" + Key.ENTER)
 
 class TestSendFile:
-        #Define variables
+    #Define variables
     friendName = "Alehaptap"
     
     #Start or focus on Zalo (Zalo will be maximized)
@@ -93,6 +98,7 @@ class TestSendFile:
     iconSearch.highlight(1)
     click(Resource.imgSearch)
     type(friendName + Key.ENTER) #Search name, press Enter to open Chat Window
+    type("LOG: Start send file @" + Utils.getCurrDatetime() + Key.ENTER)
 
     if exists(Resource.imgAttachFile):
         imgAttachFile = find(Resource.imgAttachFile)
@@ -105,14 +111,14 @@ class TestSendFile:
         wait(1)
         type("n", Key.ALT) #Hotkey to focus filename textbox
         type("RenderingControl.xml" + Key.ENTER)
-        popup("SUCCESS: Please verify message file!")
+        type("LOG SUCCESS: Please verify message file!" + Key.ENTER)
     else:
-        popup("ERROR: Can not find File Attachment Icon")
+        type("LOG ERROR: Can not find File Attachment Icon" + Key.ENTER)
 
 class testSendSticker:
     #Define variables
     friendName = "Alehaptap"
-    msgContent = "this is a text"
+    msgContent = "Start sticker test @" + Utils.getCurrDatetime()
     
     #Start or focus on Zalo (Zalo will be maximized)
     wait(1)
@@ -129,4 +135,8 @@ class testSendSticker:
     iconSticker = find(Resource.imgSticker)
     iconSticker.highlight(1)
     click(Resource.imgSticker)
+    wait(0.5)
+    click(Resource.imgDefaultSticker)
+    wait(0.5)
     click(Resource.imgCuHanh1)
+    type("LOG SUCCESS: Please verify sticker message!" + Key.ENTER)

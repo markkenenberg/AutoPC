@@ -47,3 +47,13 @@ class MainClass:
     def findInRangeBelow(self, imgOrigin, pixel):
         r = find(imgOrigin).below(pixel)
         return r
+
+    @classmethod
+    def highlightRegion(self, imgOrigin, second):
+        r = find(imgOrigin)
+        r.highlight(second)
+
+    @classmethod
+    def blinkingRegion(self, region, second, count):
+        for x in range (0, count):
+            region.highlight(second)

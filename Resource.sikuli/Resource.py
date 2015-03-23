@@ -16,8 +16,11 @@ imgTabDock =         "1426926184826.png"
 imgMessageTab =      "1426880169388.png"
 imgContactTab =      "1426880177091.png"
 imgSubContactTab =   "1426924850651.png"
+imgBuddyList =       "1427127213645.png"
+imgGroupList =       "1427127236172.png"
 imgHeaderSearchBar = "1426924899515.png"
-imgTaoTroChuyen =    "1426602596454.png"
+imgTaoTroChuyen =    "1427132634054.png"
+imgGroupListTitle =  "1427127371027.png"
 
 #ChatWindow
 imgSticker =         "1426885166877.png"
@@ -28,6 +31,7 @@ imgScreenShot =      "1426885132422.png"
 imgInputHint =       "1426885141255.png"
 imgInviteMore =      "1426603026066.png"
 imgDefaultSticker =  "1426603050928.png"
+imgCuHanh =          "1427132124544.png"
 imgRecentSticker =   "1426603066127.png"
 imgEmoticons =       "1426603087670.png"
 imgTextboxChat =     "1426880124819.png"
@@ -42,6 +46,13 @@ imgXoaHoiThoai =     "1426929665595.png"
 imgConfirmYes =      "1426929711896.png"
 imgConfirmNo =       "1426929722112.png"
 
+#Group Right-click option
+imgNhanTin =         "1427128051084.png"
+imgGuiAnh =          "1427128059429.png"
+imgDieuChinhThanhVien = "1427128067188.png"
+imgDoiTenNhom =      "1427128079060.png"
+imgRoiNhom =         "1427128092781.png"
+
 #Message ACK
 imgDaGui =           "1426882253696.png"
 imgDaNhan =          "1426883053465.png"
@@ -53,3 +64,10 @@ imgGroupList =       "1426603187031.png"
 
 #Stickers
 imgCuHanh1 =         "1426931233694.png"
+
+#System
+imgNetwork =         "1427133185990.png"
+imgNoNetwork =       "1427134171901.png"
+imgWifiSection =     "1427133249854.png"
+imgSwitchON =        "1427133270942.png"
+imgSwitchOFF =       "1427134351798.png"
