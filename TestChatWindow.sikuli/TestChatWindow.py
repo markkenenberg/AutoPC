@@ -68,7 +68,7 @@ class testSendPhoto:
     iconSearch.highlight(1)
     click(Resource.imgSearch)
     type(friendName + Key.ENTER) #Search name, press Enter to open Chat Window
-    type("LOG: Start send photo @" + Utils.getCurrDatetime() + Key.ENTER)
+    Utils.saySth("Start send photo @" + Utils.getCurrDatetime())
 
     if exists(Resource.imgAttachPhoto):
         imgAttachPhoto = find(Resource.imgAttachPhoto)
@@ -81,9 +81,9 @@ class testSendPhoto:
         wait(1)
         type("n", Key.ALT) #Hotkey to focus filename textbox
         type("DMR_120.jpg" + Key.ENTER)
-        type("LOG SUCCESS: Please verify message photo!" + Key.ENTER)
+        Utils.saySth("Photo was sent succesfully!")
     else:
-        type("LOG ERROR: Can not find Photo Attachment Icon" + Key.ENTER)
+        Utils.saySth("Error: Can't find attachment icon, or something else happened...")
 
 class TestSendFile:
     #Define variables
@@ -98,7 +98,7 @@ class TestSendFile:
     iconSearch.highlight(1)
     click(Resource.imgSearch)
     type(friendName + Key.ENTER) #Search name, press Enter to open Chat Window
-    type("LOG: Start send file @" + Utils.getCurrDatetime() + Key.ENTER)
+    Utils.saySth("Start send file @" + Utils.getCurrDatetime())
 
     if exists(Resource.imgAttachFile):
         imgAttachFile = find(Resource.imgAttachFile)
@@ -111,9 +111,9 @@ class TestSendFile:
         wait(1)
         type("n", Key.ALT) #Hotkey to focus filename textbox
         type("RenderingControl.xml" + Key.ENTER)
-        type("LOG SUCCESS: Please verify message file!" + Key.ENTER)
+        Utils.saySth("File was sent succesfully!")
     else:
-        type("LOG ERROR: Can not find File Attachment Icon" + Key.ENTER)
+        Utils.saySth("Error: Can't find attachment icon, or something else happened...")
 
 class testSendSticker:
     #Define variables
@@ -139,4 +139,4 @@ class testSendSticker:
     click(Resource.imgDefaultSticker)
     wait(0.5)
     click(Resource.imgCuHanh1)
-    type("LOG SUCCESS: Please verify sticker message!" + Key.ENTER)
+    Utils.saySth("Sticker sent succesfully.")

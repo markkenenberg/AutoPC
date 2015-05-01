@@ -21,3 +21,7 @@ class Utils:
     def startChrome(self):
         insDir = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
         openApp(insDir)
+
+    @classmethod
+    def saySth(self, textToSay):
+        type("JARVIS: " + textToSay + Key.ENTER)

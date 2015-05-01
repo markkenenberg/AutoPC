@@ -43,6 +43,11 @@ class MainClass:
         r = find(imgOrigin).above(pixel)
         return r
 
+    @classmethod 
+    def findInRangeLeft(self, imgOrigin, pixel):
+        r = find(imgOrigin).left(pixel)
+        return r
+
     @classmethod
     def findInRangeBelow(self, imgOrigin, pixel):
         r = find(imgOrigin).below(pixel)
