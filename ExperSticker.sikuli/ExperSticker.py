@@ -16,7 +16,7 @@ appName = "Zalo"
 userName = "Nam"
 appUnderTest = App(appName + " - " + userName)
 
-class TestDeleteConversation:
+class TestSendSticker:
     #Start or focus on Zalo (Zalo will be maximized)
     wait(1)
     MainClass.startZalo(appUnderTest, insDir)
@@ -43,4 +43,4 @@ class TestDeleteConversation:
             
         r = MainClass.findInRangeAbove(Resource.imgTextboxChatFocused, 800).highlight(1) #Set range in Chat Window to find sent message
         stickerToFind = r.find(str(x) + ".png").highlight(1)
-        Utils.saySth("Sticker matched!")
+        Utils.saySth("Sticker " + str(x) + " matched!")
