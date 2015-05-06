@@ -75,6 +75,7 @@ class TestFocusAndSwitchTab:
     headerSearch = Resource.imgHeaderSearchBar
     r2 = MainClass.findInRangeBelow(headerSearch, 100)
     r2.highlight(1)
+    wait(1)
     if not r2.exists(Resource.imgSubContactTab):
         popup("PASS: this is message tab.")
     else:
@@ -84,8 +85,8 @@ class TestFocusAndSwitchTab:
     rContact = find(Resource.imgContactTab)
     rContact.highlight(1)
     click(Resource.imgContactTab)
-
     r2.highlight(1)
+    wait(1)
     if r2.exists(Resource.imgSubContactTab):
         popup("PASS: found Ban Be and Danh Sach Nhom, this is contact tab.")
     else:

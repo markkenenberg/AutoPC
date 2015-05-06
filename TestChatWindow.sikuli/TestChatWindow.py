@@ -140,3 +140,4 @@ class testSendSticker:
     wait(0.5)
     click(Resource.imgCuHanh1)
     Utils.saySth("Sticker sent succesfully.")
+    wait(1)

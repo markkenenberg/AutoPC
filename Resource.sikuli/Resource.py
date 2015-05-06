@@ -12,7 +12,7 @@ imgBtnFeedback =     "1426602924498.png"
 #Maintab
 imgSearch =          "1430401541088.png"
 imgSettings =        "1426602984079.png"
-imgTabDock =         "1426926184826.png"
+imgTabDock =         "1430885559756.png"
 imgMessageTab =      "1430406290205.png"
 imgContactTab =      "1430406279903.png"
 imgSubContactTab =   "1426924850651.png"

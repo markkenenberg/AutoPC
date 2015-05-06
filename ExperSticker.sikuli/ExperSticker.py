@@ -44,3 +44,4 @@ class TestSendSticker:
         r = MainClass.findInRangeAbove(Resource.imgTextboxChatFocused, 800).highlight(1) #Set range in Chat Window to find sent message
         stickerToFind = r.find(str(x) + ".png").highlight(1)
         Utils.saySth("Sticker " + str(x) + " matched!")
+        wait(1)
