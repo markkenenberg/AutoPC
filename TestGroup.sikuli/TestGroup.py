@@ -69,7 +69,6 @@ class RenameGroup:
         popup("FAILED: group name NOT matched!" + 
                 "\nExpect name: " + groupNameToChange +
                 "\nActual name: " + txtFromClipBoard)
-
 class CreateGroup:
     #Define variables
     groupNameToChange = "Group Create Nha"
