@@ -25,3 +25,15 @@ class Utils:
     @classmethod
     def saySth(self, textToSay):
         type("JARVIS: " + textToSay + Key.ENTER)
+
+    @classmethod
+    def logPassed(self):
+        intPassed
+        intPassed += 1
+        return intPassed
+
+    @classmethod
+    def logFailed(self):
+        intFailed
+        intFailed += 1
+        return intFailed
