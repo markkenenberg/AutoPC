@@ -89,3 +89,5 @@ imgPreviewUndo =     "1433177709874.png"
 imgUndoMessage =     "1433177884169.png"
 imgMenuUndo =        "1433177972739.png"
 imgUndoContent =     "1433179409983.png"
+
+imgMenuPhotoFolder = "1433243510213.png"
