@@ -55,6 +55,8 @@ class SendFromPCUndoFromPC:
     else:
         popup("SUCCESS: Message was undo!")
 
+    wait(2)
+
 class SendFromMobileUndoFromPC:
     #Define variables
     
@@ -93,7 +95,7 @@ class SendFromMobileUndoFromPC:
                 "\nExpect: Message content must be " + "Tin nhan da bi thu hoi")
     else:
         popup(u"SUCCESS: Tin nhắn đã được Undo ở PC. Kiểm tra trạng thái Undo trên Mobile!")
-
+    wait(2)
 class SendFromMobileUndoFromMobile:
     #Define variables
     
@@ -123,8 +125,10 @@ class SendFromMobileUndoFromMobile:
         else:
             popup(u"FAILED: Lỗi undo tin nhắn!")
     else:
-        popup("FAILED: Can't find message on PC!")
+        popup("FAILED: Ca    wait(2) message on PC!")
         
+    wait(2)        
+    
 class RemoveLocalPhotoWhenUndo:
     #Start or focus on Zalo (Zalo will be maximized)
     wait(1)
@@ -178,6 +182,8 @@ class RemoveLocalPhotoWhenUndo:
                u"\nExpect: File ảnh đã được xoá.")
     else:
         popup(u"FAILED: Tin nhắn chưa được undo!")
+    
+    wait(2)
 
 class RemoveLocalVoiceWhenUndo:
     #Start or focus on Zalo (Zalo will be maximized)
@@ -229,6 +235,8 @@ class RemoveLocalVoiceWhenUndo:
     else:
         popup(u"FAILED: Tin nhắn chưa được undo!")
 
+    wait(2)
+    
 class RemoveLocalVideoWhenUndo:
     #Start or focus on Zalo (Zalo will be maximized)
     wait(1)
@@ -282,3 +290,5 @@ class RemoveLocalVideoWhenUndo:
                u"\nExpect: File voice đã được xoá.")
     else:
         popup(u"FAILED: Tin nhắn chưa được undo!")
+
+    wait(2)
